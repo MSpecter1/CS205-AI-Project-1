@@ -1,12 +1,19 @@
 class NineMenTrench:
+    operators = 3
+
+    def InitialState():
+        return 0
     
-    def CheckSolution():
+    def GoalTest(state):
         return 0
     
     def MisplacedTileHeuristic():
         return 0
 
     def ManhattanDistanceHeuristic():
+        return 0
+    
+    def Operate(dir):
         return 0
 
 class TrenchState:
