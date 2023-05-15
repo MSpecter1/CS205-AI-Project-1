@@ -44,8 +44,16 @@ def UniformCost(node):
 def AStar_MisplacedTiles(node):
     return node.depth + node.state.MisplacedTileHeuristic()
 
-def AStar_ManhattanDistance(node):
-    return node.depth + node.state.ManhattanDistanceHeuristic()
+def AStar_ManhattanDistanceAll(node):
+    return node.depth + node.state.ManhattanDistanceHeuristicAll()
+
+def AStar_ManhattanOneMisplacedRest(node):
+    return node.depth + node.state.ManhattanOneHeuristicMisplacedTilesRest()
+
+def AStar_CostOneMTMD(node):
+    return node.depth + node.state.CostOneMTMDHeuristic()
+def AStar_CostOneMT(node):
+    return node.depth + node.state.CostOneMTHeuristic()
 
 class GeneralSearch:
     # AStar Search to find steps to balance ship
@@ -131,8 +139,38 @@ class GeneralSearch:
         print("Max Queue Size: ", max_queue_size)
         return 0
     
+
+# Interface Code
+print("Nine Men in a Trench:\n-------------------------")
+print("Heuristics:")
+print("0. Uniform Cost")
+print("1. AStar Misplaced Tiles")
+print("2. AStar Manhattan Distance of All")
+print("3. AStar Manhattan of One, Misplaced Tiles for rest")
+print("4. AStar CostOneMT with Manhattan Distance")
+print("5. AStar CostOneMT")
+h = int(input("Please choose a heuristic: "))
+
+print("Problem States:")
+print("0. Initial State")
+print("1. 12 depth state")
+
+p = input("Please choose a problem: ")
+
+match h:
+    case 0: 
+        queue_function = UniformCost
+    case 1: 
+        queue_function = AStar_MisplacedTiles
+    case 2: 
+        queue_function = AStar_ManhattanDistanceAll
+    case 3: 
+        queue_function = AStar_ManhattanOneMisplacedRest
+    case 4: 
+        queue_function = AStar_CostOneMTMD
+    case 5: 
+        queue_function = AStar_CostOneMT
+
 test = GeneralSearch()
-problem = NineMenTrench.NineMenTrench()
-queue_function = AStar_ManhattanDistance
-# queue_function = AStar_MisplacedTiles
+problem = NineMenTrench.NineMenTrench(p)
 test.search(problem, queue_function)

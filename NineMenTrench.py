@@ -31,104 +31,6 @@ class TrenchState:
                         break
                 elif row == 1:
                     self.array_state[row][col] = 0
-
-        # self.array_state[1][0] = 2
-        # self.array_state[1][1] = 3
-        # self.array_state[1][2] = 5
-        # self.array_state[1][3] = 6
-        # self.array_state[1][4] = 8
-        # self.array_state[1][5] = 9
-        # self.array_state[1][6] = 0
-        # self.array_state[1][7] = 0
-        # self.array_state[1][8] = 0
-        # self.array_state[1][9] = 1
-
-        # self.array_state[0][3] = 4
-        # self.array_state[0][5] = 7
-        # self.array_state[0][7] = 0
-
-        # /////////////////////
-
-        # self.array_state[1][0] = 2
-        # self.array_state[1][1] = 3
-        # self.array_state[1][2] = 5
-        # self.array_state[1][3] = 6
-        # self.array_state[1][4] = 8
-        # self.array_state[1][5] = 9
-        # self.array_state[1][6] = 0
-        # self.array_state[1][7] = 0
-        # self.array_state[1][8] = 0
-        # self.array_state[1][9] = 0
-
-        # self.array_state[0][3] = 4
-        # self.array_state[0][5] = 7
-        # self.array_state[0][7] = 1
-
-        # /////////////////////
-
-        # self.array_state[1][0] = 2
-        # self.array_state[1][1] = 3
-        # self.array_state[1][2] = 0
-        # self.array_state[1][3] = 0
-        # self.array_state[1][4] = 5
-        # self.array_state[1][5] = 6
-        # self.array_state[1][6] = 7
-        # self.array_state[1][7] = 8
-        # self.array_state[1][8] = 9
-        # self.array_state[1][9] = 1
-
-        # self.array_state[0][3] = 4
-        # self.array_state[0][5] = 0
-        # self.array_state[0][7] = 0
-
-        # 
-        
-        # self.array_state[1][0] = 2
-        # self.array_state[1][1] = 3
-        # self.array_state[1][2] = 5
-        # self.array_state[1][3] = 6
-        # self.array_state[1][4] = 8
-        # self.array_state[1][5] = 0
-        # self.array_state[1][6] = 0
-        # self.array_state[1][7] = 0
-        # self.array_state[1][8] = 7
-        # self.array_state[1][9] = 9
-
-        # self.array_state[0][3] = 4
-        # self.array_state[0][5] = 1
-        # self.array_state[0][7] = 0
-
-        # 
-        # self.array_state[1][0] = 2
-        # self.array_state[1][1] = 3
-        # self.array_state[1][2] = 5
-        # self.array_state[1][3] = 6
-        # self.array_state[1][4] = 0
-        # self.array_state[1][5] = 0
-        # self.array_state[1][6] = 0
-        # self.array_state[1][7] = 0
-        # self.array_state[1][8] = 7
-        # self.array_state[1][9] = 9
-
-        # self.array_state[0][3] = 4
-        # self.array_state[0][5] = 1
-        # self.array_state[0][7] = 8
-
-        # 
-        # self.array_state[1][0] = 0
-        # self.array_state[1][1] = 2
-        # self.array_state[1][2] = 3
-        # self.array_state[1][3] = 0
-        # self.array_state[1][4] = 5
-        # self.array_state[1][5] = 6
-        # self.array_state[1][6] = 7
-        # self.array_state[1][7] = 8
-        # self.array_state[1][8] = 9
-        # self.array_state[1][9] = 1
-
-        # self.array_state[0][3] = 4
-        # self.array_state[0][5] = 0
-        # self.array_state[0][7] = 0
         return 0
     
     def __eq__(self, other):
@@ -139,10 +41,27 @@ class TrenchState:
         for row in self.array_state:
             print(row)
 
+    def changeState12(self):
+        # Change to state with depth 12
+        self.array_state[1][0] = 2
+        self.array_state[1][1] = 3
+        self.array_state[1][2] = 5
+        self.array_state[1][3] = 0
+        self.array_state[1][4] = 0
+        self.array_state[1][5] = 0
+        self.array_state[1][6] = 4
+        self.array_state[1][7] = 6
+        self.array_state[1][8] = 7
+        self.array_state[1][9] = 9
+
+        self.array_state[0][3] = 1
+        self.array_state[0][5] = 0
+        self.array_state[0][7] = 8
+
     def getPosMan(self, man):
+        # Get current position of man
         row_num = 0
         for row in self.array_state:
-            # print("TEST",row)
             try:
                 col = row.index(man)
             except:
@@ -217,62 +136,6 @@ class TrenchState:
         elif dir == 2:
             return self.moveRight(pos,man,dist)
         return 0
-
-    # def operate(self, man, dir, dist):
-    #     # Move a single man in direction dir, with dist # of spaces
-    #     # dir = 0, move left
-    #     # dir = 1, move up or down
-    #     # dir = 2, move right
-    #     if man>self.men:
-    #         return -1 # error
-        
-    #     pos = self.getPosMan(man)
-    #     # if (pos[1]-dist<0 and dir==0) or (dir==2 and pos[1]+dist>9):
-    #     #     # print(man,pos[1], dist)
-    #     #     return 0
-    #     if dir == 0:
-    #         #  Check if move is possible (no obstacles in left range)
-    #         # target = self.array_state[pos[0]][pos[1]-dist]
-    #         try:
-    #             target = self.array_state[pos[0]][pos[1]-dist]
-    #             if(pos[1]-dist<0): return 0
-    #         except:
-    #             return 0
-    #         # if man==9: print("Target POS:", pos[1]-dist, ", val= ",target)
-    #         if target == 0 and all(space == 0 for space in self.array_state[pos[0]][pos[1]-dist:pos[1]]):
-    #             self.array_state[pos[0]][pos[1]-dist] = man
-    #             self.array_state[pos[0]][pos[1]] = 0
-    #             return 1
-    #         return 0
-    #     elif dir == 1:
-    #         #  Check if move is possible (no obstacle above/below)
-    #         target_row = 0
-    #         if pos[0] == 0:
-    #             target_row = 1
-    #         elif pos[0] == 1:
-    #             target_row = 0
-    #         target = self.array_state[target_row][pos[1]]
-    #         if target == 0:
-    #             self.array_state[target_row][pos[1]] = man
-    #             self.array_state[pos[0]][pos[1]] = 0
-    #             return 1
-    #         return 0
-    #     elif dir == 2:
-    #         #  Check if move is possible (no obstacles in right range)
-    #         # target = self.array_state[pos[0]][pos[1]+dist]
-    #         try:
-    #             target = self.array_state[pos[0]][pos[1]+dist]
-    #             if(pos[1]+dist>9): return 0
-    #         except:
-    #             return 0
-    #         if target == 0 and all(space == 0 for space in self.array_state[pos[0]][pos[1]+1:pos[1]+dist]):
-    #             self.array_state[pos[0]][pos[1]+dist] = man
-    #             self.array_state[pos[0]][pos[1]] = 0
-    #             return 1
-    #         return 0
-        
-
-    #     return 0
     
     def MisplacedTileHeuristic(self):
         cnt = 0
@@ -287,46 +150,70 @@ class TrenchState:
         if not self.array_state[1][8] == 9: cnt+=1
         return cnt
 
-    def ManhattanDistanceHeuristic(self):
+    def ManhattanDistanceHeuristicAll(self):
+        # Find position of 1, sergeant
+        s_pos = self.getPosMan(1)
+        # find distance between pos and 1,0
+        dist = self.cost(1,s_pos)
+        for i in range(2, self.men+1):
+            # MANHATTAN
+            pos = self.getPosMan(i)
+            dist+= abs(pos[0]-1)+abs(pos[1]-(i-1))
+        return dist
+    
+    def ManhattanOneHeuristicMisplacedTilesRest(self):
+        # Find position of 1, sergeant
+        s_pos = self.getPosMan(1)
+        # find distance between pos and 1,0
+        dist = abs(s_pos[0]-1)+abs(s_pos[1])
+        for i in range(2, self.men+1):
+            # MISPLACED TILE
+            pos = self.getPosMan(i)
+            if pos[1]!=i-1 or pos[0]!=1:
+                dist+=1
+        return dist
+
+    def CostOneMTMDHeuristic(self):
         dist = 0
-
-        # # Find position of 1, sergeant
-        # s_pos = self.getPosMan(1)
-        # # find distance between pos and 1,0
-        # dist = self.cost(1,s_pos)
-        # for i in range(2, self.men+1):
-        #     # MANHATTAN
-        #     # pos = self.getPosMan(i)
-        #     # dist+= abs(pos[0]-1)+abs(pos[1]-(i-1))
-            
-        #     # MISPLACED TILE
-        #     pos = self.getPosMan(i)
-        #     if pos[1]!=i-1 or pos[0]!=1:
-        #         dist+=1
-        # return dist
-
         man = 0
         m_pos = None
         for i in range(1,self.men+1):
             # Find position of i
             m_pos = self.getPosMan(i)
             man = i
-            # find distance between pos and i
-            # dist = abs(m_pos[0]-1)+abs(m_pos[1]-(i-1))
             if man==1: dist = self.cost(i,m_pos)
-            else: dist = abs(m_pos[0]-1)+abs(m_pos[1]-(i-1))
+            else: abs(m_pos[0]-1)+abs(m_pos[1]-(i-1))
             # print(dist)
             if (dist==0): continue # if the current man is already in position, its h(n)=0 so move on to the next
             break
 
         for j in range(man+1, self.men+1):
-            # MISPLACED TILE of rest of men
+            # MISPLACED TILE for rest of men
             pos = self.getPosMan(j)
             if pos[1]!=j-1 or pos[0]!=1 or (m_pos[0]!=1 or m_pos[1]!=(man-1)):
                 dist+=1
-            if (self.array_state[0][3]==0 and pos[1]==3) and m_pos[1]>3 and not self.getManMoveRecess(man,m_pos, 3): dist+=1 
-            elif (self.array_state[0][5]==0 and pos[1]==5) and m_pos[1]>5 and not self.getManMoveRecess(man,m_pos, 5): dist+=1
-            elif (self.array_state[0][7]==0 and pos[1]==7) and m_pos[1]>7 and not self.getManMoveRecess(man,m_pos, 7): dist+=1
+
+        return dist
+
+    def CostOneMTHeuristic(self):
+        dist = 0
+        man = 0
+        m_pos = None
+        for i in range(1,self.men+1):
+            # Find position of i
+            m_pos = self.getPosMan(i)
+            man = i
+            if man==1: dist = self.cost(i,m_pos)
+            elif m_pos[1]!=i-1: dist+=1
+            # print(dist)
+            if (dist==0): continue # if the current man is already in position, its h(n)=0 so move on to the next
+            break
+
+        for j in range(man+1, self.men+1):
+            # MISPLACED TILE for rest of men
+            pos = self.getPosMan(j)
+            if pos[1]!=j-1 or pos[0]!=1 or (m_pos[0]!=1 or m_pos[1]!=(man-1)):
+                dist+=1
 
         return dist
 
@@ -341,9 +228,8 @@ class TrenchState:
             pos = self.getPosMan(i)
             if pos[1] in range(target,m_pos[1]+1):
                 cost+=1 # If this man is to the left of the sergeant, they need to move out of the way
-            # If for each recess that is to the left of the sergeant, it is not filled or there are other men to the right, add 1
 
-            # CODE 1
+            # RECESS CODE
             # if (self.array_state[0][3]==0 and pos[1]>=3) and m_pos[1]>3 and not self.getManMoveRecess(man,m_pos, 3): cost+=1 
             # elif (self.array_state[0][5]==0 and pos[1]>=5) and m_pos[1]>5 and not self.getManMoveRecess(man,m_pos, 5): cost+=1
             # elif (self.array_state[0][7]==0 and pos[1]>=7) and m_pos[1]>7 and not self.getManMoveRecess(man,m_pos, 7): cost+=1
@@ -363,9 +249,17 @@ class NineMenTrench:
     men = 0
     goal = None
     TrenchState = TrenchState()
+    option = 0
+
+    def __init__(self, p):
+        self.option = p
 
     def InitialState(self):
         self.TrenchState.InitializeTrench(10, 9)
+        
+        if self.option!=0 and self.option==1:
+            self.TrenchState.changeState12()
+
         self.men = self.TrenchState.men
         self.h_size = self.TrenchState.size
         
@@ -387,44 +281,11 @@ class NineMenTrench:
                         cnt+=1
                     else:
                         self.goal[row][col] = 0
-        # for row in goal:
-        #     print(row)
         return self.TrenchState
     
     def GoalTest(self, state):
         if self.goal==state.array_state:
             return True
-        # if state.array_state[1][0]==1: return True
-        # if state.array_state[0][3]==1: return True
-        # if state.array_state[0][5]==1: return True
-        # if state.array_state[1][0]==2 and state.array_state[1][1]==3 and state.array_state[0][3]==4 and state.array_state[1][2]==5 and state.array_state[1][3]==6 and state.array_state[1][4]==8 and state.array_state[1][5]==9 and state.array_state[0][5]==7: return True
-        # if state.array_state[1][0]==2 and state.array_state[1][1]==3  and state.array_state[1][2]==5 and state.array_state[1][3]==0 and state.array_state[1][4]==0 and state.array_state[0][3]==1: return True
-
-        # if (state.array_state[1][0] == 2 
-        # and state.array_state[1][1] == 3
-        # and state.array_state[1][2] == 5
-        # and state.array_state[1][3] == 6
-        # and state.array_state[1][4] == 8
-        # and state.array_state[1][5] == 0
-        # and state.array_state[1][6] == 0
-        # and state.array_state[1][7] == 0
-        # and state.array_state[1][8] == 7
-        # and state.array_state[1][9] == 9
-        # and state.array_state[0][3] == 4
-        # and state.array_state[0][5] == 0
-        # and state.array_state[0][7] == 1):
-        #     return True
-
-        # if (state.array_state[1][0]==2 
-        #     and state.array_state[1][1]==3 
-        #     and state.array_state[1][2]==5 
-        #     and state.array_state[1][3]==6 
-        #     and state.array_state[1][4]==8 
-        #     and state.array_state[1][5]==9 
-        #     and state.array_state[0][3]==4 
-        #     and state.array_state[0][5]==7
-        #     and state.array_state[0][7]==1
-        #     ): return True
         return False
     
     # return array of nodes post operation
@@ -439,25 +300,19 @@ class NineMenTrench:
         for man in range(1, self.men+1):
             for dir in range(0,3):
                 match dir:
-                    case 0:
+                    case 0: # move left
                         for dist in range(1, self.h_size-1):
                             # If move is possible, do so and add to node_arr
                             # If not possible, means not enough space past that dist, so end loop early
                             new_node = copy.deepcopy(node)
                             if new_node.state.operate(man, dir, dist):
-                                new_node.solution.append("MOVE "+str(man)+" in dir "+ str(dir)+ ": "+ str(dist)+ " spaces" )
+                                new_node.solution.append("MOVE "+str(man)+" left "+ str(dist)+ " spaces" )
                                 node_arr.append(new_node)
                             else:
                                 continue
                     
                     case 1:
                         for dist in range(0, 3):
-                            # new_node = copy.deepcopy(node)
-                            # if new_node.state.operate(man, dir, dist):
-                            #     new_node.solution.append("MOVE "+str(man)+" in dir "+ str(dir)+ ": "+ str(dist)+ " spaces" )
-                            #     node_arr.append(new_node)
-                            # else:
-                            #     continue
                             for h_dir in range(0,2):
                                 for h_dist in range(0, self.h_size-1):
                                     # move horizontal then up
@@ -503,15 +358,14 @@ class NineMenTrench:
                                             node_arr.append(new_node)
                                         else:
                                             continue
-                    case 2:
+                    case 2: # Move right
                         for dist in range(1, self.h_size-1):
                             new_node = copy.deepcopy(node)
                             if new_node.state.operate(man, dir, dist):
-                                new_node.solution.append("MOVE "+str(man)+" in dir "+ str(dir)+ ": "+ str(dist)+ " spaces" )
+                                new_node.solution.append("MOVE "+str(man)+" right "+ str(dist)+ " spaces" )
                                 node_arr.append(new_node)
                             else:
                                 continue
-        # print("---------------------------------------\n")
         return node_arr
 
 
@@ -574,7 +428,7 @@ def test3():
     print("INITIAL STATE:")
     test.printState()
 
-    print("MH:", test.ManhattanDistanceHeuristic())
+    # print("MH:", test.ManhattanDistanceHeuristic())
 
     print("\n")
     print("TEST: LEFT")
@@ -592,7 +446,7 @@ def test4():
     print("INITIAL STATE:")
     test.printState()
 
-    print("MH:", test.ManhattanDistanceHeuristic())
+    print("MH:", test.CostOneMTHeuristic())
 # test()
 # test2()
 # test3()
